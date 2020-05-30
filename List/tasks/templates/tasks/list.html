@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<div class="func">
+<button title="New Task" type="button" class="btn btn-secondary" onclick="window.location.href='add/'">
+    <i class="fas fa-plus-circle"></i>Add New Task
+</button>
+<a title="Delete All" id="add-link" class="btn btn-secondary" href="delete-all/">
+    <i class="fas fa-trash-alt"></i>Delete All 
+</a>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Created</th>
+            <th scope="col">Deadline</th>
+            <th scope="col">
+            </th>
+        </tr>
+    </thead>
+    {%  for task in task %}
+    <tbody>
+    <tr>
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.created_date }}</td>
+        <td>
+            {% if task.deadline != None %}
+               {{ task.deadline }}
+            {% endif %}
+        </td>
+        <td>
+            <a title="Edit" id="add-link" class="btn btn-secondary" href="edit/{{task.id}}">
+                <i class="fas fa-edit"></i>
+            </a>
+        
+            <a title="Delete" id="add-link" class="btn btn-secondary" href="delete/{{task.id}}">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </td>
+        
+    </tr>    
+    </tbody>
+    {% endfor %}
+</table>
+<div class="pagination">
+    <ul class="pagination justify-content-center">
+        {% if task.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ task.previous_page_number }}">Previous</a>
+            </li>
+        {% endif %}
+        <li class="page-item">
+            <a class="page-link">{{ task.number }} of {{ task.paginator.num_pages}}</a>
+            
+        </li>
+        {% if task.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ task.next_page_number }}">Next</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
+
+
+
+ 
+{% endblock %}

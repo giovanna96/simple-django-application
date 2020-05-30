@@ -1,0 +1,45 @@
+
+.container{
+  margin: auto;
+  width: 50%;
+  height: auto;
+  padding: 10px;
+  
+  
+
+}
+
+.form-group{
+    top: 1;
+    bottom: 1;
+    border-radius: 5px;
+    
+    
+}
+
+.table{
+    margin-left: 2px;
+    margin-right: 2px;
+  
+}
+
+.btn{
+    opacity: 0.8;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.form-control{
+
+    margin-top: 5px;
+}
+
+.pagination{
+    margin-left: 40%;
+}
+
+.func{
+    margin-left: 65%;
+}

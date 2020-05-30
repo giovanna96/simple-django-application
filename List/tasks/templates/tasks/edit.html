@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors%}
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>{{ error|escape }}</strong>
+            </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+    <form action=""  method="POST">
+        {% csrf_token %}
+         <div class="form-group">
+            <div class="row">
+                <div class="col">
+                        <input class="form-control form-control-lg" type="text" value="{{task.title}}" placeholder="Title" required id="title" name="title">
+                </div>    
+                <div class="col">
+                    <input class="form-control form-control-lg"  type="text" value="{{task.deadline|date:'m/d/Y'}}" placeholder="Deadline"  id="deadline" name="deadline">
+               </div>                        
+            </div>
+             <div class="row">
+                <div class="col">
+                    <input class="form-control form-control-lg" type="text" value="{{task.description}}" placeholder="Description" required id="description" name="description">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-secondary" >
+                <i class="fas fa-plus-circle"></i>Confirm
+            </button>
+            <a id="add-link" class="btn btn-secondary" href="/">
+                <i class="fas fa-plus-circle"></i>Cancel
+            </a>
+            
+        </div>
+    </form>
+{% endblock %}
